@@ -10,11 +10,35 @@ public class NativeLibrary {
         System.loadLibrary("native-lib");
     }
 
-    public native String stringFromJNI();
-
     public native int[] startBubbleSort(int[] arr);
 
-    public native int fibonacci(int number);
+    public native int getTimeBubbleSort(int[] arr);
 
-    public native int[] quickSort(int[] arr,int low, int high);
+    public native int getTimeFibonacci(int number);
+
+    private native int[] quickSort(int[] arr,int low, int high);
+
+    public native int getTimeQuickSort(int[] arr,int low, int high);
+
+//    public long getTimeFibonacci(int n){
+//        long startTime = System.currentTimeMillis();
+//        fibonacci(n);
+//        long endTime = System.currentTimeMillis();
+//        return (endTime - startTime);
+//    }
+
+//    public long getTimeQuickSort(int[] arr,int low, int high){
+//        long startTime = System.currentTimeMillis();
+//        quickSort(arr,low,high);
+//        long endTime = System.currentTimeMillis();
+//        return (endTime - startTime);
+//    }
+
+//    public long getTimeBubbleSort(int[] arr){
+//        long startTime = System.currentTimeMillis();
+//        startBubbleSort(arr);
+//        long endTime = System.currentTimeMillis();
+//        return (endTime - startTime);
+//    }
+
 }

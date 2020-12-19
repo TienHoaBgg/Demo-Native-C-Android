@@ -1,32 +1,50 @@
 package com.nth.demo;
 
+import android.util.Log;
+
 /**
  * Created by NguyenTienHoa on 12/17/2020
  */
 
 public class JavaLibrary {
 
-    public int[] startBubbleSort(int[] arr){
-        int temp;
-        boolean swapped = false;
+
+    public long getTimeBubbleSort(int[] arr) {
+        long startTime = System.currentTimeMillis();
+        bubbleSort(arr);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+    public long getTimeFibonacci(int n) {
+        long startTime = System.currentTimeMillis();
+        fibonacci(n);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+
+    public long getTimeQuickSort(int[] numbers, int low, int high) {
+        long startTime = System.currentTimeMillis();
+        quickSort(numbers, low, high);
+        long endTime = System.currentTimeMillis();
+        return (endTime - startTime);
+    }
+
+    private int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            swapped = false;
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    temp = arr[j];
+                    int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
-                    swapped = true;
                 }
-            }
-            if (!swapped) {
-                break;
             }
         }
         return arr;
     }
 
-    public int fibonacci(int n) {
+    private int fibonacci(int n) {
         if (n < 0) {
             return -1;
         } else if (n == 0 || n == 1) {
@@ -36,36 +54,39 @@ public class JavaLibrary {
         }
     }
 
-    public int[] quickSort (int[] numbers, int low, int high) {
-        int i = low;
-        int j = high;
-        int temp;
-        int middle = numbers[(low+high)/2];
-        while (i < j) {
-            while (numbers[i] < middle) {
-                i++;
-            }
-            while (numbers[j] > middle) {
-                j--;
-            }
+    public void quickSort(int arr[], int left, int right) {
+        if (right - left <= 0) {
+            return;
+        } else {
+            int pivot = arr[right];
+            int partitionPoint = partition(arr, left, right, pivot);
+            quickSort(arr, left, partitionPoint - 1);
+            quickSort(arr, partitionPoint + 1, right);
+        }
+    }
 
-            if (i<=j) {
-                temp = numbers[i];
-                numbers[i] = numbers[j];
-                numbers[j] = temp;
-                i++;
-                j--;
+    public void swap(int arr[], int num1, int num2) {
+        int temp = arr[num1];
+        arr[num1] = arr[num2];
+        arr[num2] = temp;
+    }
+
+    public int partition(int arr[], int left, int right, int pivot) {
+        int leftPointer = left - 1;
+        int rightPointer = right;
+        while (true) {
+            while (arr[++leftPointer] < pivot) {
+            }
+            while (rightPointer > 0 && arr[--rightPointer] > pivot) {
+            }
+            if (leftPointer >= rightPointer) {
+                break;
+            } else {
+                swap(arr, leftPointer, rightPointer);
             }
         }
-
-        if (low < j) {
-            quickSort(numbers, low, j);
-        }
-
-        if (i < high) {
-            quickSort(numbers, i, high);
-        }
-        return numbers;
+        swap(arr, leftPointer, right);
+        return leftPointer;
     }
 
 }

@@ -1,33 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".MainActivity">
+        android:gravity="center_horizontal"
+        android:background="#131313"
+        tools:context=".MainActivity"
+        >
 
-        <TextView
-            android:id="@+id/sample_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:layout_marginBottom="30dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Click"
-            android:id="@+id/btn_click"
-            tools:ignore="MissingConstraints"
-            android:layout_gravity="center"
-            android:gravity="center"
-
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="250dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#101010"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Input"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold|italic"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <EditText
+                android:id="@+id/txtInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:hint="Nhập số lượng phần tử"
+                android:background="#FFF"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lần lặp"
+                android:textColor="@color/white"
+                android:textSize="23sp"
+                android:textStyle="bold|italic"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <EditText
+                android:id="@+id/txtLoop"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:hint="Nhập số lần kiểm tra"
+                android:background="#FFF"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <Button
+                    android:id="@+id/btnJava"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start \nJava"
+                    android:layout_marginEnd="10dp"
+                    android:padding="15dp"
+                    />
+                <Button
+                    android:id="@+id/btnNative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start\n Native"
+                    android:layout_marginStart="10dp"
+                    android:padding="15dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+            <TableLayout
+                android:id="@+id/showResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1"
+                android:layout_margin="20dp"
+                android:visibility="gone"
+                >
+                <TableRow android:padding="8dp">
+                    <TextView
+                        android:text="Memory: "
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/memory"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        />
+                </TableRow>
+                <TableRow android:padding="8dp">
+                    <TextView
+                        android:text="Input: "
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/element"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        />
+                </TableRow>
+                <TableRow android:padding="8dp">
+                    <TextView
+                        android:text="Iterations: "
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/iteration"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        />
+                </TableRow>
+                <TableRow android:padding="8dp">
+                    <TextView
+                        android:text="Results in ms: "
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/result"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        />
+                </TableRow>
+                <TableRow android:padding="8dp">
+                    <TextView
+                        android:text="Mean: "
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+                    <TextView
+                        android:id="@+id/mean"
+                        android:text="@string/app_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        />
+                </TableRow>
+            </TableLayout>
+
+                <ProgressBar
+                    android:id="@+id/process"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </layout>
